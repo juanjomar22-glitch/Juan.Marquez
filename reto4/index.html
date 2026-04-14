@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integracion Multidimensional - Reto 4</title>
+  <style>
+    :root {
+      --bg: #f5f2ea;
+      --paper: #fffdf9;
+      --text: #1f2a37;
+      --muted: #5b6675;
+      --line: #d8d2c7;
+      --head: #0f766e;
+      --soft: #e7f5f2;
+      --shadow: 0 14px 30px rgba(31, 42, 55, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(15, 118, 110, 0.08), transparent 22rem),
+        linear-gradient(180deg, #f8f5ef 0%, #efe7da 100%);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1100px, calc(100% - 32px));
+      margin: 32px auto 48px;
+    }
+
+    .hero, .section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero { padding: 30px; }
+
+    .section {
+      margin-top: 22px;
+      padding: 24px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--head);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 12px;
+      line-height: 1.15;
+    }
+
+    h1 { font-size: clamp(2rem, 4vw, 3.2rem); }
+
+    h2 {
+      font-size: 1.55rem;
+      margin-top: 4px;
+    }
+
+    p { margin: 0 0 14px; }
+
+    .muted { color: var(--muted); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8faf9 100%);
+    }
+
+    .card span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .card strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--head);
+      font-size: 1.9rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      background: #fff;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #edf8f5;
+      color: #173d3a;
+    }
+
+    .radar-box {
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: linear-gradient(180deg, #fff 0%, #f7fbfa 100%);
+      text-align: center;
+    }
+
+    .radar-box img {
+      width: min(100%, 760px);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(31, 42, 55, 0.08);
+    }
+
+    ul {
+      margin: 10px 0 0 20px;
+      padding: 0;
+    }
+
+    li { margin-bottom: 8px; }
+
+    .footer {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 860px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="tag">Reto 4 · GitHub Pages</div>
+      <h1>Integracion Multidimensional de Solicitantes de Credito</h1>
+      <p class="muted">
+        Caso de estudio del sector Fintech en el que se busca reducir la atencion de los solicitantes a cinco nuevas
+        sucursales, utilizando el metodo de K-Medoids como tecnica de integracion multidimensional.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <span>Metodo aplicado</span>
+          <strong>K-Medoids</strong>
+          <p class="muted">Cinco semillas iniciales y actualizacion de medoides por distancia minima.</p>
+        </article>
+        <article class="card">
+          <span>Solicitantes analizados</span>
+          <strong>5842</strong>
+          <p class="muted">Registros con informacion valida para el proceso de integracion.</p>
+        </article>
+        <article class="card">
+          <span>Variables usadas</span>
+          <strong>9</strong>
+          <p class="muted">Edad, Hijos, Perscargo, Estrato, Ingresos, Egresos, Monto, Plazo y Cuota.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="two-col">
+        <div>
+          <h2>Objetivo</h2>
+          <p>
+            Integrar los solicitantes de credito en cinco nuevas sucursales para apoyar la toma de decisiones de la
+            entidad, identificando numero de clientes, municipios de procedencia y comportamiento de preaprobacion o
+            prenegacion.
+          </p>
+        </div>
+        <div>
+          <h2>Metodologia</h2>
+          <p>
+            Se emplearon las variables numericas del enunciado, se normalizaron los datos y se aplico K-Medoids con
+            cinco semillas iniciales para construir clusters representativos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Resultados por Nueva Sucursal</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Cluster</th>
+            <th>Clientes</th>
+            <th>Preaprobados</th>
+            <th>Prenegados</th>
+            <th>% Preaprobacion</th>
+            <th>% Prenegacion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>1358</td><td>1211</td><td>147</td><td>89.18%</td><td>10.82%</td></tr>
+          <tr><td>2</td><td>261</td><td>121</td><td>140</td><td>46.36%</td><td>53.64%</td></tr>
+          <tr><td>3</td><td>2267</td><td>924</td><td>1343</td><td>40.76%</td><td>59.24%</td></tr>
+          <tr><td>4</td><td>1407</td><td>387</td><td>1020</td><td>27.51%</td><td>72.49%</td></tr>
+          <tr><td>5</td><td>549</td><td>240</td><td>309</td><td>43.72%</td><td>56.28%</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Municipios Predominantes</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Cluster</th>
+            <th>Municipios de procedencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Bello (53.24%), Medellin (31.81%), Itagui (8.47%), Envigado (3.61%), Sabaneta (2.87%)</td></tr>
+          <tr><td>2</td><td>Sabaneta (39.08%), Caldas (34.87%), Bello (11.49%), Itagui (9.96%), Medellin (3.45%)</td></tr>
+          <tr><td>3</td><td>Sabaneta (44.95%), Caldas (32.29%), Itagui (15.62%), Bello (7.15%)</td></tr>
+          <tr><td>4</td><td>Caldas (63.82%), Sabaneta (31.34%), Bello (1.99%), Itagui (1.63%), Envigado (1.21%)</td></tr>
+          <tr><td>5</td><td>Sabaneta (36.98%), Caldas (28.60%), Bello (18.94%), Itagui (12.75%), Envigado (1.46%), Medellin (1.28%)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Representacion Multidimensional</h2>
+      <p class="muted">
+        El siguiente grafico de radar resume el comportamiento promedio de las variables consideradas en cada cluster.
+      </p>
+      <div class="radar-box">
+        <img src="Radar.png" alt="Grafico radar de los clusters">
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Interpretacion General</h2>
+      <ul>
+        <li>El cluster 1 concentra el segmento mas favorable, con la mayor tasa de preaprobacion.</li>
+        <li>El cluster 4 presenta la mayor proporcion de prenegacion y un perfil economico relativamente mas bajo.</li>
+        <li>Los clusters 3 y 5 agrupan una parte importante de solicitantes provenientes de Sabaneta y Caldas.</li>
+        <li>La segmentacion final depende de la combinacion de variables sociodemograficas y financieras, no solo del municipio.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Conclusion</h2>
+      <p>
+        La integracion multidimensional mediante K-Medoids permitio consolidar los solicitantes en cinco nuevas
+        sucursales con perfiles diferenciados. Esta clasificacion facilita el analisis comercial y el apoyo a la toma
+        de decisiones dentro de la entidad Fintech.
+      </p>
+    </section>
+
+    <p class="footer">Pagina elaborada para la publicacion del Reto 4 en GitHub Pages.</p>
+  </main>
+</body>
+</html>
